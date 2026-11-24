@@ -1,0 +1,31 @@
+:root{color-scheme:light;font-family:system-ui,sans-serif;background:#eff4f2;color:#152b31;line-height:1.55}
+*{box-sizing:border-box}
+body{margin:0}
+main{max-width:1200px;margin:auto;padding:40px clamp(14px,4vw,54px)}
+header{background:radial-gradient(ellipse at top right,#24695e,#102f35 65%);color:#fff;border-radius:24px;padding:clamp(24px,6vw,62px);margin-bottom:22px}
+.tag{color:#bbf1cb;font-size:.85rem;letter-spacing:.15em;font-weight:750}
+h1,h2,p{margin:0 0 .65em}
+h1{font-size:clamp(2.25rem,6vw,5.3rem);line-height:1;letter-spacing:-.065em}
+h2{font-size:1.55rem;letter-spacing:-.035em}
+header p:not(.tag){color:#e2f3ec;max-width:36rem}
+.button{display:inline-block;background:#bdf4cd;border-radius:8px;color:#102f35;font-weight:700;padding:9px 15px;text-decoration:none;margin-top:8px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:12px;margin-bottom:16px}
+.card,.panel{background:#fff;border-radius:16px;border:1px solid #dce8e2;padding:clamp(15px,3vw,27px)}
+.card strong{display:block;font-size:1.45rem;letter-spacing:-.04em}
+.card span,.note,.section-head p{color:#435d62}
+.panel{margin-bottom:16px}
+.section-head{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+select{background:#f3f8f5;color:inherit;border:1px solid #aac3b9;border-radius:6px;padding:8px;max-width:100%;font:inherit}
+.table-wrap{overflow:auto}
+table{width:100%;min-width:845px;border-collapse:collapse;text-align:right;font-variant-numeric:tabular-nums}
+th,td{padding:10px 8px;border-bottom:1px solid #dfeae5}
+th{font-size:.85rem;background:#edf5f0}
+th:nth-child(2),td:nth-child(2){text-align:left;font-weight:650}
+.note{font-size:.89rem;margin-top:9px}
+.chart{width:100%;display:block;margin-top:12px}
+.prompt-text{margin-top:14px;font-weight:750}
+.responses{display:grid;grid-template-columns:repeat(auto-fit,minmax(218px,1fr));gap:10px}
+.response{padding:13px;background:#f2f7f4;border-radius:10px;overflow-wrap:anywhere}
+.response h3{font-size:1rem;margin:0 0 4px}.response p{margin-bottom:4px}
+summary{cursor:pointer;font-weight:650;margin-bottom:8px}
+a{color:#116575}

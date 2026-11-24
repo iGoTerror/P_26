@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Measured E-Shop benchmark for four GPT-style text decoders and one vision-language decoder.">
+<title>GPT Variant Benchmark Board</title>
+<link rel="stylesheet" href="style.css">
+<main>
+  <header>
+    <p class="tag">P26 / MODEL EVALUATION</p>
+    <h1>GPT Variant<br>Benchmark Board</h1>
+    <p>Measure how decoder size, LoRA and image input affect an E-Shop chatbot.</p>
+    <a class="button" href="leaderboard.csv" download>Download results CSV</a>
+  </header>
+  <p id="status" role="status">Loading benchmark results…</p>
+  <div id="board" hidden>
+    <section class="cards" aria-label="Run summary" id="cards"></section>
+    <section class="panel">
+      <div class="section-head">
+        <div><h2>Leaderboard</h2><p>All ranks use the same nine text prompts.</p></div>
+        <label>Sort by <select id="sort">
+          <option value="f1">BERTScore F1</option><option value="exact">Exact match</option>
+          <option value="latency_ms">Latency</option><option value="weights_kib">Weight memory</option>
+          <option value="cost_usd">Estimated cost</option>
+        </select></label>
+      </div>
+      <div class="table-wrap"><table>
+        <thead><tr><th scope="col">Rank</th><th scope="col">Model</th><th scope="col">Parameters</th><th scope="col">F1</th><th scope="col">Exact</th><th scope="col">Latency<br>ms</th><th scope="col">Weights<br>KiB</th><th scope="col">RSS<br>MiB</th><th scope="col">Energy*<br>µWh</th><th scope="col">Cost*<br>nUSD</th></tr></thead>
+        <tbody id="leaders"></tbody>
+      </table></div>
+      <p id="assumptions" class="note"></p>
+      <img class="chart" src="benchmark.svg" alt="Python-generated bar charts comparing mean BERTScore and generation latency by entrant">
+    </section>
+    <section class="panel">
+      <h2>Prompt explorer</h2>
+      <p>Compare raw outputs with the reference and inspect the vision and bias cases.</p>
+      <label for="prompt">Evaluation prompt</label> <select id="prompt"></select>
+      <div id="promptView" aria-live="polite"></div>
+    </section>
+    <section class="panel">
+      <h2>LoRA and bias checks</h2>
+      <p id="lora"></p><p id="bias"></p>
+      <details><summary>Method and limitations</summary><p id="method"></p>
+        <p>BERTScore uses token-level contextual embeddings from MiniLM. Exact match checks the reference wording after token normalization. A high semantic score can still hide an incorrect policy detail. The two names form one counterfactual pair. They provide a narrow consistency check.</p>
+        <p>The image case is scored separately because text-only decoders cannot accept pixels. These are compact GPT-style causal decoders trained on a synthetic shop dataset. The results apply to this workload and CPU run.</p>
+        <a href="results.json">View full run data</a>
+      </details>
+    </section>
+  </div>
+</main>
+<script src="recorded-run.js" defer></script>
+<script src="app.js" defer></script>
+</html>
